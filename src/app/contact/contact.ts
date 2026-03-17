@@ -31,8 +31,8 @@ export class Contact implements OnInit {
 
   readonly contactForm: FormGroup;
 
-  private readonly EMAILJS_SERVICE  = 'service_tox7kqs';
-  private readonly EMAILJS_TEMPLATE = 'template_nv7k7mj';
+  private readonly EMAILJS_SERVICE  = 'service_b0w9uyo';
+  private readonly EMAILJS_TEMPLATE = 'template_po870lq';
   private readonly EMAILJS_KEY      = 'SybVGsYS52j2TfLbi';
 
   constructor(private fb: FormBuilder) {
