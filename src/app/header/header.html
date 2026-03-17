@@ -1,0 +1,74 @@
+<header
+  class="navbar"
+  [class.navbar--scrolled]="isScrolled()"
+  [class.navbar--open]="menuOpen()"
+  role="banner"
+>
+  <div class="container navbar__inner">
+
+    <!-- Logo / Brand -->
+    <a
+      href="#hero"
+      class="navbar__logo"
+      (click)="scrollTo($event, 'hero')"
+      aria-label="Ankita Patel — go to top"
+    >
+      <span class="navbar__logo-mark" aria-hidden="true">AP</span>
+      <span class="navbar__logo-name">Ankita Patel</span>
+    </a>
+
+    <!-- Navigation Links -->
+    <nav class="navbar__nav" [class.navbar__nav--open]="menuOpen()" aria-label="Main navigation">
+      <ul class="navbar__links" role="list">
+        @for (link of navLinks; track link.id) {
+          <li>
+            <a
+              [href]="'#' + link.id"
+              class="navbar__link"
+              [class.navbar__link--active]="activeSection() === link.id"
+              (click)="scrollTo($event, link.id)"
+              [attr.aria-current]="activeSection() === link.id ? 'page' : null"
+            >{{ link.label }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Right-side actions -->
+    <div class="navbar__actions">
+      <button
+        class="theme-toggle"
+        (click)="themeService.toggleTheme()"
+        [attr.aria-label]="themeService.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+        title="Toggle theme"
+      >
+        @if (themeService.isDark()) {
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+          </svg>
+        } @else {
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
+          </svg>
+        }
+      </button>
+
+      <button
+        class="hamburger"
+        [class.hamburger--active]="menuOpen()"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+@if (menuOpen()) {
+  <div class="nav-backdrop" (click)="closeMenu()" aria-hidden="true"></div>
+}

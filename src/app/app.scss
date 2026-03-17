@@ -1,0 +1,8 @@
+// App-level shell styles.
+// Section backgrounds are handled in global styles.scss via class selectors.
+// Individual components own their internal spacing.
+
+#main-content {
+  // Offset content below the fixed navbar
+  padding-top: 0; // sections have their own padding-block
+}

@@ -1,0 +1,353 @@
+// ══════════════════════════════════════════════════════════
+// SHOWCASE CARD — full-width horizontal layout
+// ══════════════════════════════════════════════════════════
+.showcase-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color var(--transition-theme),
+              background var(--transition-theme);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 60px rgba(99, 102, 241, 0.18);
+  }
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+
+  // ── Left: visual ────────────────────────────────────────
+  &__visual {
+    position: relative;
+    min-height: 340px;
+    overflow: hidden;
+
+    @media (max-width: 860px) { min-height: 220px; }
+  }
+
+  &__image-bg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // Stack chips overlaid on the gradient
+  &__stack-overlay {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    .badge {
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(6px);
+      font-size: 0.72rem;
+    }
+  }
+
+  // ── Code-editor mockup ───────────────────────────────────
+  &__mockup {
+    width: 72%;
+    max-width: 280px;
+    background: #1e1e2e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+    animation: floatY 4s ease-in-out infinite;
+
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+  }
+
+  &__mockup-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px 8px;
+    background: #2a2a3e;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+  }
+
+  &__mockup-body {
+    padding: 14px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  // ── Right: content ──────────────────────────────────────
+  &__content {
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+
+    @media (max-width: 860px) { padding: 28px 24px; }
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  &__best-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 2px 12px rgba(245, 158, 11, 0.4);
+  }
+
+  &__title {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.25;
+    transition: color var(--transition-theme);
+
+    @media (max-width: 860px) { font-size: 1.25rem; }
+  }
+
+  &__desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    transition: color var(--transition-theme);
+
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  // ── Highlights list ──────────────────────────────────────
+  &__highlights {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.855rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      transition: color var(--transition-theme);
+
+      svg {
+        flex-shrink: 0;
+        margin-top: 2px;
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  // ── Action buttons ───────────────────────────────────────
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+
+    .btn {
+      svg { transition: transform var(--transition-base); }
+      &:hover svg { transform: translate(2px, -2px); }
+    }
+  }
+}
+
+// Mock lines used inside the code window mockup
+.mock-line {
+  height: 8px;
+  border-radius: 4px;
+  opacity: 0.75;
+
+  &--purple { background: #c084fc; }
+  &--blue   { background: #60a5fa; }
+  &--green  { background: #4ade80; }
+}
+
+// ══════════════════════════════════════════════════════════
+// STANDARD CARD
+// ══════════════════════════════════════════════════════════
+.project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  // ── Image ─────────────────────────────────────────────────
+  &__image-wrapper {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &:hover &__image { transform: scale(1.05); }
+
+  &__image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    span {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 0 16px;
+    }
+  }
+
+  &__featured-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-md);
+  }
+
+  // ── Body ──────────────────────────────────────────────────
+  &__body {
+    flex: 1;
+    padding: 20px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .badge { text-transform: capitalize; }
+  }
+
+  &__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    transition: color var(--transition-theme);
+  }
+
+  &__description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    transition: color var(--transition-theme);
+
+    // Clamp to 3 lines
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  // ── Footer ────────────────────────────────────────────────
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px 20px;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+    transition: border-color var(--transition-theme);
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      color: var(--color-primary);
+      background: rgba(99, 102, 241, 0.08);
+    }
+
+    &--primary {
+      margin-left: auto;
+      background: rgba(99, 102, 241, 0.08);
+      color: var(--color-primary);
+
+      &:hover {
+        background: rgba(99, 102, 241, 0.16);
+        transform: translateY(-1px);
+      }
+
+      svg { transition: transform var(--transition-base); }
+      &:hover svg { transform: translate(2px, -2px); }
+    }
+  }
+}

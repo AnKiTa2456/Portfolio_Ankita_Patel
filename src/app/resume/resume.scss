@@ -1,0 +1,226 @@
+.resume {
+
+  &__card {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: background var(--transition-theme), border-color var(--transition-theme);
+    max-width: 900px;
+    margin: 0 auto;
+
+    @media (max-width: 720px) { grid-template-columns: 1fr; }
+  }
+
+  // ── Left: PDF preview mockup ────────────────────────────
+  &__preview {
+    position: relative;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 32px;
+    min-height: 380px;
+
+    @media (max-width: 720px) { min-height: 220px; padding: 32px 24px; }
+  }
+
+  &__doc {
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px 20px;
+    width: 100%;
+    max-width: 220px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    animation: floatDoc 5s ease-in-out infinite;
+
+    @keyframes floatDoc {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50%       { transform: translateY(-12px) rotate(-1deg); }
+    }
+  }
+
+  &__doc-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  &__doc-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    flex-shrink: 0;
+  }
+
+  &__doc-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__doc-line {
+    height: 7px;
+    border-radius: 4px;
+    background: #e5e7eb;
+
+    &--name { width: 80%; background: #9ca3af; }
+    &--role { width: 60%; background: #d1d5db; }
+  }
+
+  &__doc-divider {
+    height: 1px;
+    background: #f3f4f6;
+    margin: 12px 0;
+  }
+
+  &__doc-section {
+    margin-bottom: 12px;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  &__doc-label {
+    height: 6px;
+    width: 40%;
+    background: #6366f1;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+
+  &__doc-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 6px;
+  }
+
+  &__chip {
+    height: 14px;
+    border-radius: 7px;
+    background: #e0e7ff;
+    display: inline-block;
+    width: 40px;
+
+    &--sm { width: 28px; }
+    &--lg { width: 54px; }
+  }
+
+  // Floating "PDF Resume" badge
+  &__badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+  }
+
+  // ── Right: content ──────────────────────────────────────
+  &__content {
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+
+    @media (max-width: 720px) { padding: 32px 24px; }
+  }
+
+  &__availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #16a34a;
+    background: rgba(22, 163, 74, 0.1);
+    border: 1px solid rgba(22, 163, 74, 0.25);
+    padding: 5px 14px;
+    border-radius: var(--radius-full);
+    width: fit-content;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #16a34a;
+    flex-shrink: 0;
+    animation: pulse 2s ease-in-out infinite;
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.5); }
+      50%       { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); }
+    }
+  }
+
+  &__name {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.2;
+    transition: color var(--transition-theme);
+  }
+
+  &__tagline {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    transition: color var(--transition-theme);
+  }
+
+  &__highlights {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      transition: color var(--transition-theme);
+
+      svg {
+        flex-shrink: 0;
+        margin-top: 2px;
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+
+  &__btn-download {
+    svg { transition: transform var(--transition-base); }
+    &:hover svg { transform: translateY(2px); }
+  }
+}

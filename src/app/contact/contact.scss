@@ -1,0 +1,278 @@
+.contact {
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+
+    @media (max-width: 1024px) { gap: 48px; }
+    @media (max-width: 768px)  {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  // ── Info Panel ────────────────────────────────────────────
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition:
+      background-color var(--transition-theme),
+      border-color var(--transition-theme);
+  }
+
+  &__info-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border-color);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+
+    &:last-child { border-bottom: none; }
+
+    &:not(&--static):hover {
+      background: rgba(99, 102, 241, 0.05);
+      transform: translateX(4px);
+    }
+
+    &--static { cursor: default; }
+  }
+
+  &__info-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--color-primary);
+    flex-shrink: 0;
+    transition: background var(--transition-fast);
+
+    .contact__info-item:hover & {
+      background: rgba(99, 102, 241, 0.18);
+    }
+  }
+
+  &__info-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+
+  &__info-value {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color var(--transition-theme);
+  }
+
+  &__availability {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: rgba(16, 185, 129, 0.06);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: var(--radius-md);
+    padding: 16px;
+
+    p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+
+      strong {
+        color: var(--color-success);
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__avail-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-success);
+    flex-shrink: 0;
+    margin-top: 5px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  // ── Form Panel ────────────────────────────────────────────
+  &__form-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    transition:
+      background-color var(--transition-theme),
+      border-color var(--transition-theme);
+    box-shadow: var(--shadow-md);
+
+    @media (max-width: 480px) { padding: 20px; }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__submit {
+    width: 100%;
+    margin-top: 4px;
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+  }
+
+  &__spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+
+  // ── Success state ─────────────────────────────────────────
+  &__success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
+    padding: 16px 0;
+    min-height: 260px;
+
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      max-width: 300px;
+      line-height: 1.6;
+    }
+  }
+
+  &__success-icon {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--color-success);
+    animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+// ── Form elements (reusable across the app) ────────────────
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+
+  &--error .form-input {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+  }
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color var(--transition-theme);
+
+  span { color: var(--color-error); margin-left: 2px; }
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--transition-fast);
+
+  &::placeholder { color: var(--text-muted); }
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    background: var(--bg-card);
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.form-char-count {
+  text-align: right;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: -2px;
+}
+
+.form-error {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: var(--color-error);
+  font-weight: 500;
+
+  &::before {
+    content: '⚠';
+    font-size: 0.75rem;
+  }
+}
+
+// ── Keyframes ─────────────────────────────────────────────
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45); }
+  50%       { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}

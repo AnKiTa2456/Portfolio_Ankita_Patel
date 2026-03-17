@@ -1,0 +1,159 @@
+<!-- Hero — full viewport, two-column: text left | illustration right -->
+<div class="hero">
+
+  <!-- Decorative animated background -->
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__blob hero__blob--1"></div>
+    <div class="hero__blob hero__blob--2"></div>
+    <div class="hero__blob hero__blob--3"></div>
+    <!-- Grid dots pattern -->
+    <div class="hero__dots"></div>
+  </div>
+
+  <div class="container hero__container">
+
+    <!-- ── LEFT: Text ──────────────────────────────────── -->
+    <div class="hero__content">
+
+      <span class="hero__eyebrow" appScrollReveal revealDelay="0ms">
+        <span class="hero__status-dot" aria-hidden="true"></span>
+        Open to Work — Seeking Software Developer Role
+      </span>
+
+      <h1 class="hero__name" appScrollReveal revealDelay="120ms">
+        Hi, I'm<br>
+        <span class="gradient-text">Ankita Patel</span>
+      </h1>
+
+      <!-- Typewriter role display -->
+      <p class="hero__role" appScrollReveal revealDelay="220ms" aria-live="polite" aria-atomic="true">
+        <span class="hero__role-prefix">I'm a </span>
+        <span class="hero__role-text">{{ displayRole() }}</span>
+        <span class="hero__cursor" [class.hero__cursor--hidden]="!showCursor()" aria-hidden="true">|</span>
+      </p>
+
+      <p class="hero__tagline" appScrollReveal revealDelay="320ms">
+        I am a motivated and versatile individual, always eager to take on new challenges.
+        With a passion for learning I am dedicated to delivering
+        <strong>high-quality</strong>, <strong>user-centric</strong> web experiences.
+      </p>
+
+      <div class="hero__cta" appScrollReveal revealDelay="420ms">
+        <a href="#contact" class="btn btn--primary" (click)="scrollTo($event, 'contact')">
+          Contact Me
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#projects" class="btn btn--outline" (click)="scrollTo($event, 'projects')">
+          View Projects
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </a>
+      </div>
+
+      <div class="hero__social" appScrollReveal revealDelay="520ms">
+        <a href="https://github.com/AnKiTa2456" target="_blank" rel="noopener noreferrer" class="hero__social-link" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.455-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.891 1.529 2.341 1.087 2.91.831.091-.645.349-1.087.635-1.337-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/ankita-patel-859508220/" target="_blank" rel="noopener noreferrer" class="hero__social-link" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://leetcode.com/imankita3/" target="_blank" rel="noopener noreferrer" class="hero__social-link" aria-label="LeetCode">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+        </a>
+        <a href="mailto:p.ankita10101@gmail.com" class="hero__social-link" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── RIGHT: Animated illustration + profile ──────── -->
+    <div class="hero__visual" appScrollReveal revealDirection="right" revealDelay="200ms">
+
+      <!-- Animated code window -->
+      <div class="code-window" aria-hidden="true">
+        <div class="code-window__bar">
+          <span class="code-window__dot code-window__dot--red"></span>
+          <span class="code-window__dot code-window__dot--yellow"></span>
+          <span class="code-window__dot code-window__dot--green"></span>
+          <span class="code-window__filename">ankita.tsx</span>
+        </div>
+        <div class="code-window__body">
+          <div class="code-line animate-line-1">
+            <span class="ck">const</span>
+            <span class="cv"> developer</span>
+            <span class="co"> = </span>
+            <span class="cb">&#123;</span>
+          </div>
+          <div class="code-line animate-line-2">
+            <span class="ci">&nbsp;&nbsp;name</span>
+            <span class="co">: </span>
+            <span class="cs">"Ankita Patel"</span><span class="co">,</span>
+          </div>
+          <div class="code-line animate-line-3">
+            <span class="ci">&nbsp;&nbsp;role</span>
+            <span class="co">: </span>
+            <span class="cs">"Software Developer"</span><span class="co">,</span>
+          </div>
+          <div class="code-line animate-line-4">
+            <span class="ci">&nbsp;&nbsp;skills</span>
+            <span class="co">: [</span>
+            <span class="cs">"React"</span><span class="co">, </span>
+            <span class="cs">"Angular"</span>
+            <span class="co">],</span>
+          </div>
+          <div class="code-line animate-line-5">
+            <span class="ci">&nbsp;&nbsp;passion</span>
+            <span class="co">: </span>
+            <span class="cs">"Building great UX 🚀"</span>
+          </div>
+          <div class="code-line animate-line-6">
+            <span class="cb">&#125;</span>
+          </div>
+          <div class="code-line animate-line-7">
+            <span class="ccomment">// Ready to contribute!</span>
+          </div>
+          <div class="code-line code-cursor-line">
+            <span class="code-cursor">█</span>
+          </div>
+        </div>
+
+        <!-- Floating orbit rings -->
+        <div class="code-window__orbit code-window__orbit--1"></div>
+        <div class="code-window__orbit code-window__orbit--2"></div>
+      </div>
+
+      <!-- Profile image floating badge -->
+      <div class="hero__avatar-badge">
+        <img
+          [src]="profileImageUrl"
+          alt="Ankita Patel"
+          class="hero__avatar-img"
+          width="80"
+          height="80"
+          loading="eager"
+        >
+        <div class="hero__avatar-info">
+          <span class="hero__avatar-name">Ankita Patel</span>
+          <span class="hero__avatar-status">
+            <span class="hero__status-dot hero__status-dot--sm"></span>
+            Available
+          </span>
+        </div>
+      </div>
+
+      <!-- Floating tech pills -->
+      <div class="tech-pill tech-pill--1" aria-hidden="true">⚛ React.js</div>
+      <div class="tech-pill tech-pill--2" aria-hidden="true">▲ Angular</div>
+      <div class="tech-pill tech-pill--3" aria-hidden="true">⚡ Next.js</div>
+
+    </div><!-- /.hero__visual -->
+
+  </div><!-- /.container -->
+
+  <!-- Scroll indicator -->
+  <a href="#about" class="hero__scroll-indicator" aria-label="Scroll down"
+     onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'});return false;">
+    <span class="hero__scroll-line"></span>
+    <span class="hero__scroll-text">Scroll</span>
+  </a>
+
+</div>

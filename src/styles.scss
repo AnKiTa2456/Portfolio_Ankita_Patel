@@ -1,0 +1,433 @@
+// ============================================================
+// PORTFOLIO — GLOBAL STYLES
+// Angular 21 + SCSS | Ankita Patel Portfolio
+// ============================================================
+
+// ============================================================
+// 1. CSS CUSTOM PROPERTIES (Light Theme defaults)
+// ============================================================
+:root {
+  // Brand palette
+  --color-primary:       #6366f1;
+  --color-primary-light: #818cf8;
+  --color-primary-dark:  #4f46e5;
+  --color-secondary:     #8b5cf6;
+  --color-accent:        #06b6d4;
+  --color-success:       #10b981;
+  --color-warning:       #f59e0b;
+  --color-error:         #ef4444;
+
+  // Backgrounds
+  --bg-primary:   #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary:  #f1f5f9;
+  --bg-card:      #ffffff;
+  --bg-nav:       rgba(255, 255, 255, 0.88);
+
+  // Text
+  --text-primary:    #0f172a;
+  --text-secondary:  #475569;
+  --text-muted:      #94a3b8;
+  --text-on-primary: #ffffff;
+
+  // Borders
+  --border-color: #e2e8f0;
+
+  // Border radius
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  // Shadows
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.04);
+  --shadow-xl: 0 20px 40px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.06);
+  --shadow-primary: 0 8px 32px rgba(99, 102, 241, 0.28);
+
+  // Transitions
+  --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base:   250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-theme:  350ms ease;
+
+  // Typography
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+
+  // Layout
+  --max-width:      1200px;
+  --section-py:     96px;
+  --nav-height:     68px;
+  --container-px:   24px;
+}
+
+// Dark Theme overrides
+[data-theme='dark'] {
+  --bg-primary:   #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary:  #334155;
+  --bg-card:      #1e293b;
+  --bg-nav:       rgba(15, 23, 42, 0.92);
+
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #64748b;
+
+  --border-color: #334155;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.35);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.28);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.38);
+  --shadow-xl: 0 20px 40px rgba(0,0,0,0.48);
+  --shadow-primary: 0 8px 32px rgba(99, 102, 241, 0.4);
+}
+
+// ============================================================
+// 2. RESET & BASE
+// ============================================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.65;
+  overflow-x: hidden;
+  transition:
+    background-color var(--transition-theme),
+    color var(--transition-theme);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+// ============================================================
+// 3. TYPOGRAPHY SCALE
+// ============================================================
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  transition: color var(--transition-theme);
+}
+
+// ============================================================
+// 4. LAYOUT UTILITIES
+// ============================================================
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-px);
+}
+
+.section {
+  padding-block: var(--section-py);
+}
+
+// ============================================================
+// 5. SECTION HEADER (shared across all sections)
+// ============================================================
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+
+  .section-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+
+    &::before,
+    &::after {
+      content: '—';
+      margin-inline: 8px;
+      opacity: 0.5;
+    }
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    transition: color var(--transition-theme);
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin-inline: auto;
+    line-height: 1.75;
+    transition: color var(--transition-theme);
+  }
+}
+
+// ============================================================
+// 6. BUTTON SYSTEM
+// ============================================================
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  user-select: none;
+
+  svg {
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+  }
+
+  &:hover svg { transform: translateX(3px); }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  // Primary — gradient filled
+  &--primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: #fff;
+    box-shadow: var(--shadow-primary);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(99, 102, 241, 0.38);
+    }
+    &:active { transform: translateY(0); }
+  }
+
+  // Outline — bordered
+  &--outline {
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    background: transparent;
+    backdrop-filter: blur(4px);
+
+    &:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-2px);
+      background: rgba(99, 102, 241, 0.06);
+    }
+    &:active { transform: translateY(0); }
+  }
+
+  // Ghost — text only
+  &--ghost {
+    color: var(--color-primary);
+    padding-inline: 8px;
+    &:hover { background: rgba(99, 102, 241, 0.08); }
+  }
+
+  // Icon only (square)
+  &--icon {
+    padding: 10px;
+    border-radius: var(--radius-md);
+    &:hover svg { transform: none; }
+  }
+}
+
+// ============================================================
+// 7. BADGE / TAG
+// ============================================================
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 11px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  background: rgba(99, 102, 241, 0.10);
+  color: var(--color-primary);
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    background: rgba(99, 102, 241, 0.18);
+  }
+}
+
+// ============================================================
+// 8. SCROLL REVEAL ANIMATIONS
+// Controlled by ScrollRevealDirective — adds .visible on intersect
+// ============================================================
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+
+  &.reveal-up    { transform: translateY(36px); }
+  &.reveal-down  { transform: translateY(-36px); }
+  &.reveal-left  { transform: translateX(-36px); }
+  &.reveal-right { transform: translateX(36px); }
+
+  &.visible {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+// ============================================================
+// 9. GRADIENT TEXT UTILITY
+// ============================================================
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 60%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// ============================================================
+// 10. SECTION ALTERNATING BACKGROUNDS
+// ============================================================
+.about-section,
+.skills-section,
+.contact-section {
+  background-color: var(--bg-secondary);
+  transition: background-color var(--transition-theme);
+}
+
+.hero-section,
+.projects-section,
+.experience-section,
+.education-section {
+  background-color: var(--bg-primary);
+  transition: background-color var(--transition-theme);
+}
+
+// ============================================================
+// 11. CARD BASE
+// ============================================================
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  transition:
+    background-color var(--transition-theme),
+    border-color var(--transition-theme),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+
+  &:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+    border-color: rgba(99, 102, 241, 0.25);
+  }
+}
+
+// ============================================================
+// 12. SCROLLBAR STYLING (webkit)
+// ============================================================
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+// ============================================================
+// 13. TEXT SELECTION
+// ============================================================
+::selection {
+  background: rgba(99, 102, 241, 0.22);
+  color: var(--color-primary-dark);
+}
+
+// ============================================================
+// 14. FOCUS VISIBLE
+// ============================================================
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+// ============================================================
+// 15. RESPONSIVE BREAKPOINTS
+// ============================================================
+@media (max-width: 1024px) {
+  :root { --section-py: 80px; }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-py:     64px;
+    --container-px:   20px;
+  }
+
+  .section-header {
+    margin-bottom: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-py:  52px;
+    --container-px: 16px;
+  }
+}
+
+// ============================================================
+// 16. PRINT
+// ============================================================
+@media print {
+  .navbar,
+  .hero__scroll-indicator { display: none; }
+}

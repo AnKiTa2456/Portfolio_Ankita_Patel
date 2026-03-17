@@ -1,0 +1,193 @@
+.experience { }
+
+// ── Timeline layout ────────────────────────────────────────
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  // Vertical line
+  &::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--color-primary),
+      var(--color-secondary),
+      transparent
+    );
+    border-radius: var(--radius-full);
+
+    @media (max-width: 768px) { left: 20px; }
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    padding-bottom: 32px;
+
+    &:last-child { padding-bottom: 0; }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 44px 1fr;
+      gap: 16px;
+    }
+  }
+
+  // ── Connector (left column) ────────────────────────────────
+  &__connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  &__dot {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: #fff;
+    box-shadow: 0 0 0 4px var(--bg-primary), var(--shadow-primary);
+    flex-shrink: 0;
+    transition: box-shadow var(--transition-theme);
+    z-index: 1;
+
+    @media (max-width: 768px) {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  // ── Card ──────────────────────────────────────────────────
+  &__card {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &:hover {
+      transform: translateY(-3px) translateX(4px);
+    }
+
+    @media (max-width: 480px) { padding: 18px; }
+  }
+
+  &__card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  &__date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-color);
+    transition:
+      background-color var(--transition-theme),
+      color var(--transition-theme);
+  }
+
+  &__current-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-success);
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    padding: 3px 9px;
+    border-radius: var(--radius-full);
+  }
+
+  &__role {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    transition: color var(--transition-theme);
+  }
+
+  &__company {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    flex-wrap: wrap;
+  }
+
+  &__location {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
+
+    &::before { content: '·'; margin-right: 2px; }
+  }
+
+  &__summary {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    font-style: italic;
+    transition: color var(--transition-theme);
+  }
+
+  // ── Responsibilities ─────────────────────────────────────
+  &__responsibilities {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      transition: color var(--transition-theme);
+
+      svg {
+        flex-shrink: 0;
+        margin-top: 4px;
+        color: var(--color-success);
+      }
+    }
+  }
+
+  // ── Tech Stack ────────────────────────────────────────────
+  &__tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-color);
+    transition: border-color var(--transition-theme);
+  }
+}

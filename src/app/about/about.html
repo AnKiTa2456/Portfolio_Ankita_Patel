@@ -1,0 +1,94 @@
+<div class="about section">
+  <div class="container">
+
+    <header class="section-header" appScrollReveal>
+      <p class="section-eyebrow">Who I Am</p>
+      <h2 class="section-title">About Me</h2>
+      <p class="section-desc">A brief introduction to my background, approach, and what drives me as a developer.</p>
+    </header>
+
+    <div class="about__grid">
+
+      <!-- Left: Summary text -->
+      <div class="about__text" appScrollReveal revealDirection="left">
+
+        <p class="about__lead">
+          I'm <strong>Ankita Patel</strong>, a passionate Software Developer with a
+          <strong>B.Tech in Computer Science</strong> from Dr. A.P.J Abdul Kalam Technical
+          University, Lucknow (7.83 CGPA).
+        </p>
+
+        <p>
+          I am a motivated and versatile individual, always eager to take on new challenges.
+          With a passion for learning I am dedicated to delivering <strong>high-quality results</strong>.
+          I specialise in building modern, responsive web applications using
+          <strong>React.js</strong>, <strong>Angular</strong>, and <strong>Next.js</strong>.
+        </p>
+
+        <p>
+          With a <strong>positive attitude</strong> and a <strong>growth mindset</strong>, I am
+          ready to make a meaningful contribution and achieve great things. I have completed
+          internships at <strong>Topperworld</strong> and <strong>InternPe</strong>, and I'm
+          actively looking for full-time opportunities to grow further.
+        </p>
+
+        <div class="about__cta-row">
+          <a
+            href="mailto:p.ankita10101@gmail.com"
+            class="btn btn--primary"
+          >
+            Get in Touch
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <a
+            href="https://drive.google.com/file/d/1m9oz8MrXoB5AxAYLaAXHd0ytoaBxmJJa/"
+            class="btn btn--outline"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View resume on Google Drive"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CV
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Stats + Highlights -->
+      <div class="about__right" appScrollReveal revealDirection="right">
+
+        <div class="about__stats">
+          @for (stat of stats; track stat.label) {
+            <div class="about__stat">
+              <span class="about__stat-value gradient-text">{{ stat.value }}</span>
+              <span class="about__stat-label">{{ stat.label }}</span>
+            </div>
+          }
+        </div>
+
+        <div class="about__highlights">
+          @for (item of highlights; track item.title) {
+            <div class="about__highlight-card">
+              <div class="about__highlight-icon" aria-hidden="true">
+                @if (item.icon === 'code') {
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                }
+                @if (item.icon === 'layers') {
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                }
+                @if (item.icon === 'zap') {
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                }
+              </div>
+              <div>
+                <h3 class="about__highlight-title">{{ item.title }}</h3>
+                <p class="about__highlight-desc">{{ item.description }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,101 @@
+.education { }
+
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  @media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 600px)  { grid-template-columns: 1fr; }
+}
+
+.edu-card {
+  position: relative;
+  padding: 28px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+
+  // Top gradient line
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    border-radius: var(--radius-full);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  &:hover::before { transform: scaleX(1); }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 52px; height: 52px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(139,92,246,0.12));
+    color: var(--color-primary);
+    flex-shrink: 0;
+    transition: transform var(--transition-base);
+    .edu-card:hover & { transform: scale(1.1) rotate(-3deg); }
+  }
+
+  &__grade {
+    position: absolute;
+    top: 20px; right: 20px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    background: rgba(99,102,241,0.1);
+    border: 1px solid rgba(99,102,241,0.2);
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.02em;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__date {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  &__degree {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.35;
+    transition: color var(--transition-theme);
+  }
+
+  &__school {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 5px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.4;
+
+    svg { margin-top: 2px; flex-shrink: 0; }
+  }
+
+  &__desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    transition: color var(--transition-theme);
+  }
+}
