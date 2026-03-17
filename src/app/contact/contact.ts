@@ -33,7 +33,7 @@ export class Contact implements OnInit {
 
   private readonly EMAILJS_SERVICE  = 'service_b0w9uyo';
   private readonly EMAILJS_TEMPLATE = 'template_po870lq';
-  private readonly EMAILJS_KEY      = 'SybVGsYS52j2TfLbi';
+  private readonly EMAILJS_KEY      = 'Tu0JTwG4pa-k-dh7y';
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
