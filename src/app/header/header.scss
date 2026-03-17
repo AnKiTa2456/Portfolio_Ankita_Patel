@@ -149,12 +149,12 @@
 
     &--active {
       color: var(--color-primary);
-      font-weight: 600;
+      font-weight: 700;
 
       &::after { transform: scaleX(1); }
 
       @media (max-width: 768px) {
-        background: rgba(99, 102, 241, 0.08);
+        background: rgba(124, 58, 237, 0.08);
         color: var(--color-primary);
       }
     }
