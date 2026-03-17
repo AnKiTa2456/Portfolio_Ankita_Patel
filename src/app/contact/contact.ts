@@ -71,8 +71,10 @@ export class Contact implements OnInit {
         .send(this.EMAILJS_SERVICE, this.EMAILJS_TEMPLATE, {
           from_name:    name,
           from_email:   email,
+          reply_to:     email,
           message:      message,
           to_name:      'Ankita',
+          to_email:     'p.ankita10101@gmail.com',
         })
         .then(() => {
           this.submitState.set('success');
