@@ -74,7 +74,6 @@ export class Contact implements OnInit {
           reply_to:     email,
           message:      message,
           to_name:      'Ankita',
-          to_email:     'p.ankita10101@gmail.com',
         })
         .then(() => {
           this.submitState.set('success');
