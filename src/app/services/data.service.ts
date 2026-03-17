@@ -188,7 +188,7 @@ export class DataService {
       degree: 'Bachelor of Technology — Computer Science & Engineering',
       school: 'Dr. A.P.J Abdul Kalam Technical University, Lucknow',
       date: 'Oct 2020 – Sep 2024',
-      grade: '7.95 CGPA',
+      grade: '7.97 CGPA',
       description:
         'Completed B.Tech in CSE with coursework in Data Structures, Algorithms, DBMS, Operating Systems, OOP, and Computer Networks. Active member of the Voygers Club Research & Innovation team.',
       icon: 'university',
@@ -207,7 +207,7 @@ export class DataService {
       degree: 'Class X — Science with PCM (State Board)',
       school: 'Kisan Inter Mediate College, Rajgarh Mirzapur, UP',
       date: 'Apr 2014 – Apr 2016',
-      grade: '86.6%',
+      grade: '86.66%',
       description: 'Completed secondary education with a strong foundation in Science and Mathematics.',
       icon: 'school',
     },

@@ -11,7 +11,7 @@ import { ScrollRevealDirective } from '../directives/scroll-reveal.directive';
 export class About {
   readonly stats = [
     { value: '4',   label: 'Roles & Internships' },
-    { value: '7.95', label: 'B.Tech CGPA' },
+    { value: '7.97', label: 'B.Tech CGPA' },
     { value: '3+',  label: 'Projects Built' },
     { value: '25+', label: 'Tech Skills' },
   ];
