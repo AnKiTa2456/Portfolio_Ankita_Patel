@@ -9,6 +9,6 @@ import { ScrollRevealDirective } from '../directives/scroll-reveal.directive';
   styleUrl: './resume.scss',
 })
 export class Resume {
-  readonly driveViewUrl  = 'https://drive.google.com/file/d/1m9oz8MrXoB5AxAYLaAXHd0ytoaBxmJJa/view';
-  readonly downloadUrl   = 'https://drive.google.com/uc?export=download&id=1m9oz8MrXoB5AxAYLaAXHd0ytoaBxmJJa';
+  readonly driveViewUrl  = '/Ankita-Patel-Resume.pdf';
+  readonly downloadUrl   = '/Ankita-Patel-Resume.pdf';
 }
